@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách Bảo mật - Face Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .update-date { color: #7f8c8d; font-style: italic; }
+        ul { padding-left: 20px; }
+        .contact { background: #ecf0f1; padding: 15px; border-radius: 5px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Chính sách Bảo mật</h1>
+    <p class="update-date">Cập nhật lần cuối: 18/03/2026</p>
+
+    <h2>1. Giới thiệu</h2>
+    <p>
+        <strong>Face Attendance</strong> ("chúng tôi", "ứng dụng") cam kết bảo vệ quyền riêng tư của người dùng. 
+        Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin cá nhân của bạn 
+        khi sử dụng ứng dụng điểm danh bằng khuôn mặt.
+    </p>
+
+    <h3>1.1. Mô hình dịch vụ doanh nghiệp (B2B Enterprise)</h3>
+    <div style="background: #eaf4fb; padding: 15px; border-left: 4px solid #3498db; margin: 10px 0;">
+        <p><strong>Face Attendance là giải pháp chấm công dành riêng cho doanh nghiệp.</strong> Ứng dụng không phân phối công khai cho người tiêu dùng cá nhân. Quy trình triển khai như sau:</p>
+        <ol>
+            <li><strong>Ký hợp đồng:</strong> Tổ chức/doanh nghiệp ký hợp đồng sử dụng giải pháp với AZVision JSC. Hợp đồng bao gồm điều khoản rõ ràng về việc ứng dụng sử dụng <strong>Google ML Kit Face Detection (Google LLC)</strong> để xử lý ảnh khuôn mặt trong quá trình chấm công — tổ chức được thông báo đầy đủ và đồng ý điều này trước khi triển khai.</li>
+            <li><strong>Triển khai hạ tầng riêng:</strong> AZVision JSC triển khai toàn bộ hệ thống chấm công lên <strong>server riêng biệt của từng khách hàng</strong>. Mỗi tổ chức có hạ tầng độc lập — dữ liệu nhân viên không được lưu trên server dùng chung hay server của AZVision JSC.</li>
+            <li><strong>Cấp tài khoản quản trị viên:</strong> Sau khi hệ thống được triển khai, AZVision JSC cấp <strong>một tài khoản quản trị viên (admin) duy nhất</strong> cho mỗi tổ chức, với mã định danh riêng biệt cho từng khách hàng. Tài khoản này được bàn giao cho đại diện được ủy quyền của tổ chức.</li>
+            <li><strong>Tạo tài khoản nhân viên:</strong> <strong>Chỉ quản trị viên</strong> của tổ chức mới có thể tạo tài khoản cho từng nhân viên. Người dùng không thể tự đăng ký — điều này đảm bảo chỉ nhân viên đã được tổ chức xác nhận và thông báo mới có thể truy cập hệ thống.</li>
+        </ol>
+        <p><strong>Sự đồng ý với việc sử dụng nhận diện khuôn mặt và chia sẻ dữ liệu với Google ML Kit được xác lập ngay tại thời điểm ký hợp đồng</strong> giữa tổ chức và AZVision JSC, cũng như thông qua thỏa thuận lao động giữa tổ chức và từng nhân viên. Không có người dùng nào có thể sử dụng ứng dụng mà không đi qua quy trình onboarding đã được tổ chức phê duyệt.</p>
+    </div>
+
+    <h2>2. Thông tin chúng tôi thu thập</h2>
+    <p>Khi bạn sử dụng Face Attendance, chúng tôi có thể thu thập các loại thông tin sau:</p>
+    
+    <h3>2.1. Dữ liệu sinh trắc học (Biometric Data)</h3>
+    <ul>
+        <li><strong>Ảnh khuôn mặt:</strong> Chúng tôi thu thập ảnh khuôn mặt của bạn để thực hiện nhận diện và điểm danh. Ảnh được chụp bằng camera thiết bị của bạn.</li>
+        <li><strong>Đặc điểm khuôn mặt (Face Embeddings):</strong> Ứng dụng sử dụng <strong>Google ML Kit Face Detection Service</strong> để phân tích và trích xuất các đặc điểm khuôn mặt (face embeddings) - đây là các số liệu toán học đại diện cho đặc trưng khuôn mặt của bạn.</li>
+        <li><strong>Quá trình xử lý dữ liệu:</strong>
+            <ul>
+                <li>Bước 1: Ảnh khuôn mặt được chụp trên thiết bị</li>
+                <li>Bước 2: Ứng dụng sẽ YÊU CẦU SỰ ĐỒNG Ý của bạn trước khi gửi ảnh đến Google ML Kit</li>
+                <li>Bước 3: Ảnh được gửi tạm thời đến Google ML Kit API để phát hiện và trích xuất face embeddings</li>
+                <li>Bước 4: Google ML Kit trả về face embeddings (không lưu trữ ảnh gốc)</li>
+                <li>Bước 5: Ảnh gốc bị xóa, chỉ lưu face embeddings trên server tổ chức</li>
+            </ul>
+        </li>
+        <li><strong>Dữ liệu gửi đến Google ML Kit (Google LLC):</strong>
+            <ul>
+                <li>Loại dữ liệu: Ảnh khuôn mặt (định dạng JPEG/PNG)</li>
+                <li>Thời gian xử lý: Vài giây</li>
+                <li>Lưu trữ: KHÔNG được lưu trữ lâu dài bởi Google</li>
+                <li>Mục đích: Chỉ để phát hiện khuôn mặt và tạo face embeddings</li>
+                <li>Chính sách bảo mật: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+            </ul>
+        </li>
+        <li><strong>Lưu trữ trên server tổ chức:</strong>
+            <ul>
+                <li>Dữ liệu lưu trữ: Chỉ face embeddings (số liệu toán học)</li>
+                <li>KHÔNG lưu trữ: Ảnh khuôn mặt gốc</li>
+                <li>Vị trí: Server của tổ chức sử dụng ứng dụng</li>
+                <li>Bảo mật: Được mã hóa và bảo vệ</li>
+            </ul>
+        </li>
+        <li><strong>CƠ SỞ ĐỒNG Ý (Basis of Consent):</strong> Nhận diện khuôn mặt là phương thức chấm công DUY NHẤT của ứng dụng. Sự đồng ý được xác lập qua hai cấp:
+            <ul>
+                <li><strong>Cấp tổ chức:</strong> Doanh nghiệp ký hợp đồng với AZVision JSC, trong đó bao gồm điều khoản sử dụng nhận diện khuôn mặt để chấm công</li>
+                <li><strong>Cấp nhân viên:</strong> Nhân viên được thông báo và đồng ý thông qua quy trình tuyển dụng/ký kết hợp đồng lao động tại tổ chức</li>
+                <li><strong>Quyền không tham gia:</strong> Nhân viên không đồng ý có thể báo cáo với bộ phận HR/quản lý để được sắp xếp phương thức chấm công thay thế do tổ chức quyết định</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>2.2. Thông tin tài khoản</h3>
+    <ul>
+        <li>Tên đăng nhập (username)</li>
+        <li>Mật khẩu (được mã hóa)</li>
+        <li>Thông tin nhân viên (tên, ID nhân viên, phòng ban)</li>
+    </ul>
+
+    <h3>2.3. Dữ liệu vị trí (Location)</h3>
+    <ul>
+        <li><strong>GPS:</strong> Chúng tôi thu thập vị trí GPS khi bạn thực hiện điểm danh để xác minh bạn có mặt tại địa điểm làm việc.</li>
+        <li><strong>Mục đích:</strong> Dữ liệu vị trí chỉ được sử dụng để kiểm tra điểm danh hợp lệ và không được chia sẻ với bên thứ ba.</li>
+    </ul>
+
+    <h3>2.4. Thông tin thiết bị</h3>
+    <ul>
+        <li>Loại thiết bị và phiên bản hệ điều hành</li>
+        <li>FCM Token (Firebase Cloud Messaging) để gửi thông báo</li>
+        <li>Nhật ký lỗi (crash logs) để cải thiện ứng dụng</li>
+    </ul>
+
+    <h3>2.5. Dữ liệu điểm danh</h3>
+    <ul>
+        <li>Thời gian điểm danh (check-in/check-out)</li>
+        <li>Vị trí điểm danh</li>
+        <li>Ảnh điểm danh</li>
+    </ul>
+
+    <h2>3. Cách chúng tôi sử dụng thông tin</h2>
+    <p>Chúng tôi sử dụng thông tin thu thập được cho các mục đích sau:</p>
+    <ul>
+        <li><strong>Nhận diện khuôn mặt:</strong> Sử dụng Google ML Kit Face Detection Service để phát hiện khuôn mặt và trích xuất đặc trưng, sau đó so sánh với database để xác thực danh tính người dùng khi điểm danh.</li>
+        <li><strong>Quản lý chấm công:</strong> Ghi nhận thời gian làm việc, tính công, theo dõi vi phạm.</li>
+        <li><strong>Thông báo:</strong> Gửi thông báo về lịch làm việc, nhắc nhở điểm danh, cảnh báo vi phạm.</li>
+        <li><strong>Báo cáo:</strong> Tạo báo cáo chấm công, thống kê cho quản lý.</li>
+        <li><strong>Cải thiện dịch vụ:</strong> Phân tích lỗi và cải thiện trải nghiệm người dùng.</li>
+    </ul>
+
+    <h2>4. Chia sẻ thông tin</h2>
+    <p><strong>Chúng tôi KHÔNG bán thông tin cá nhân của bạn</strong>. Dữ liệu chỉ được chia sẻ sau khi có sự đồng ý rõ ràng của người dùng trong các trường hợp sau:</p>
+    
+    <h3>4.1. Chia sẻ với Google ML Kit (Bên thứ ba AI)</h3>
+    <div style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; margin: 10px 0;">
+        <p><strong>THÔNG BÁO QUAN TRỌNG:</strong> Ứng dụng sử dụng dịch vụ AI của bên thứ ba (Google ML Kit) để xử lý ảnh khuôn mặt.</p>
+    </div>
+    <ul>
+        <li><strong>Bên nhận dữ liệu:</strong> Google LLC (thông qua Google ML Kit Face Detection API)</li>
+        <li><strong>Dữ liệu được gửi:</strong> Ảnh khuôn mặt ở định dạng JPEG/PNG</li>
+        <li><strong>Mục đích gửi:</strong> Phát hiện khuôn mặt và trích xuất face embeddings (đặc trưng số)</li>
+        <li><strong>Thời gian xử lý:</strong> Tức thì (vài giây)</li>
+        <li><strong>Lưu trữ bởi Google:</strong> KHÔNG - ảnh không được Google lưu trữ lâu dài</li>
+        <li><strong>Dữ liệu trả về:</strong> Face embeddings (số liệu toán học, không phải ảnh)</li>
+        <li><strong>Chính sách bảo mật:</strong> 
+            <ul>
+                <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+                <li><a href="https://developers.google.com/ml-kit/terms" target="_blank">ML Kit Terms of Service</a></li>
+                <li><a href="https://cloud.google.com/terms/cloud-privacy-notice" target="_blank">Google Cloud Privacy Notice</a></li>
+            </ul>
+        </li>
+        <li><strong>CƠ SỞ PHÁP LÝ CHO VIỆC CHIA SẺ DỮ LIỆU:</strong> Việc gửi dữ liệu đến Google ML Kit được thực hiện trên cơ sở:
+            <ul>
+                <li><strong>Điều khoản hợp đồng rõ ràng:</strong> Hợp đồng dịch vụ giữa tổ chức và AZVision JSC bao gồm điều khoản cụ thể nêu rõ rằng ứng dụng sử dụng Google ML Kit (Google LLC) để xử lý ảnh khuôn mặt — tổ chức đã đọc, hiểu và ký xác nhận điều này</li>
+                <li><strong>Sự đồng ý của tổ chức với tư cách là Data Controller:</strong> Tổ chức là bên kiểm soát dữ liệu (Data Controller) và chịu trách nhiệm thông báo cho nhân viên trước khi triển khai hệ thống</li>
+                <li><strong>Hạ tầng server riêng:</strong> Dữ liệu được lưu trên server riêng của từng tổ chức — AZVision JSC triển khai hệ thống nhưng không có quyền truy cập vào dữ liệu nhân viên sau khi bàn giao</li>
+                <li><strong>Kiểm soát truy cập nghiêm ngặt:</strong> Chỉ admin được cấp bởi tổ chức mới có thể tạo tài khoản nhân viên, đảm bảo quy trình onboarding và thông báo được thực hiện đúng cách</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>4.2. Các trường hợp chia sẻ khác</h3>
+    <ul>
+        <li><strong>Với tổ chức sử dụng:</strong> Dữ liệu chấm công và kết quả nhận diện (không phải ảnh gốc) được chia sẻ với công ty/tổ chức nơi bạn làm việc.</li>
+        <li><strong>Firebase (Google LLC):</strong> Chỉ FCM tokens và thông tin thiết bị được chia sẻ với Firebase để gửi thông báo push. <strong>KHÔNG có dữ liệu khuôn mặt nào được gửi đến Firebase.</strong></li>
+        <li><strong>Theo yêu cầu pháp luật:</strong> Khi có yêu cầu từ cơ quan nhà nước có thẩm quyền.</li>
+    </ul>
+
+    <h2>5. Bảo mật dữ liệu</h2>
+    <p>Chúng tôi áp dụng các biện pháp bảo mật sau để bảo vệ dữ liệu của bạn:</p>
+    <ul>
+        <li><strong>Mã hóa:</strong> Tất cả dữ liệu truyền tải được mã hóa bằng HTTPS/TLS.</li>
+        <li><strong>Mật khẩu:</strong> Mật khẩu được hash (bcrypt) trước khi lưu trữ.</li>
+        <li><strong>Dữ liệu khuôn mặt:</strong> Face embeddings được lưu trữ an toàn trên server, không thể phục hồi lại ảnh gốc.</li>
+        <li><strong>Truy cập hạn chế:</strong> Chỉ nhân viên được ủy quyền mới có thể truy cập dữ liệu.</li>
+        <li><strong>Backup:</strong> Dữ liệu được sao lưu định kỳ để tránh mất mát.</li>
+    </ul>
+
+    <h2>6. Quyền của người dùng</h2>
+    <p>Trong bối cảnh ứng dụng doanh nghiệp, bạn có các quyền sau đối với dữ liệu cá nhân của mình:</p>
+    <ul>
+        <li><strong>Quyền được thông báo:</strong> Được tổ chức thông báo về việc thu thập và xử lý dữ liệu khuôn mặt trước khi bắt đầu sử dụng ứng dụng.</li>
+        <li><strong>Quyền truy cập:</strong> Yêu cầu xem dữ liệu cá nhân được lưu trữ thông qua quản trị viên hệ thống.</li>
+        <li><strong>Quyền sửa đổi:</strong> Yêu cầu sửa đổi thông tin không chính xác thông qua quản trị viên.</li>
+        <li><strong>Quyền yêu cầu xóa dữ liệu:</strong> Yêu cầu xóa dữ liệu khuôn mặt thông qua quản trị viên hệ thống (trừ khi luật pháp yêu cầu lưu trữ).</li>
+        <li><strong>Quyền phản đối:</strong> Phản đối việc xử lý dữ liệu và báo cáo với bộ phận HR/quản lý của tổ chức.</li>
+        <li><strong>Quyền không tham gia:</strong> Nhân viên không đồng ý với việc sử dụng dữ liệu khuôn mặt có thể báo cáo với HR/quản lý để được tổ chức sắp xếp phương thức chấm công thay thế phù hợp.</li>
+    </ul>
+    <p>Để thực hiện các quyền trên, vui lòng liên hệ với quản trị viên hệ thống của tổ chức bạn hoặc liên hệ trực tiếp với chúng tôi qua thông tin ở cuối chính sách này.</p>
+
+    <h3>6.1. Quy trình yêu cầu xóa dữ liệu</h3>
+    <ol>
+        <li>Liên hệ với quản trị viên hệ thống của tổ chức</li>
+        <li>Gửi yêu cầu xóa dữ liệu khuôn mặt bằng văn bản</li>
+        <li>Quản trị viên sẽ xác minh danh tính và xử lý yêu cầu</li>
+        <li>Tài khoản sẽ bị vô hiệu hóa và dữ liệu được xóa (tuân theo quy định pháp luật)</li>
+    </ol>
+
+    <h2>7. Dữ liệu trẻ em</h2>
+    <p>
+        Ứng dụng Face Attendance không dành cho người dưới 18 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em. 
+        Nếu bạn là phụ huynh và phát hiện con bạn đã cung cấp thông tin cho chúng tôi, vui lòng liên hệ để chúng tôi xóa dữ liệu.
+    </p>
+
+    <h2>8. Dịch vụ của Google sử dụng trong ứng dụng</h2>
+    <p>Ứng dụng sử dụng các dịch vụ của Google LLC:</p>
+    
+    <h3>8.1. Google ML Kit Face Detection</h3>
+    <div style="background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 5px;">
+        <h4>Thông tin chi tiết về dịch vụ AI của bên thứ ba:</h4>
+        <ul>
+            <li><strong>Nhà cung cấp:</strong> Google LLC</li>
+            <li><strong>Dịch vụ:</strong> ML Kit Face Detection API</li>
+            <li><strong>Mục đích sử dụng:</strong> Phát hiện khuôn mặt và tạo face embeddings cho chấm công</li>
+            <li><strong>Loại dữ liệu gửi đi:</strong>
+                <ul>
+                    <li>Ảnh khuôn mặt (JPEG/PNG format)</li>
+                    <li>Kích thước file: Thường 100KB - 1MB</li>
+                    <li>Thông tin meta: Kích thước ảnh, định dạng</li>
+                </ul>
+            </li>
+            <li><strong>Dữ liệu nhận về:</strong>
+                <ul>
+                    <li>Tọa độ vị trí khuôn mặt trong ảnh</li>
+                    <li>Face embeddings (vector số 128 chiều)</li>
+                    <li>Độ tin cậy của việc phát hiện</li>
+                </ul>
+            </li>
+            <li><strong>Quá trình xử lý:</strong>
+                <ol>
+                    <li>Ảnh được mã hóa và gửi qua HTTPS</li>
+                    <li>Google ML Kit xử lý trong vài giây</li>
+                    <li>Trả về kết quả và XÓA ảnh khỏi server Google</li>
+                    <li>Ứng dụng nhận kết quả và xóa ảnh gốc</li>
+                </ol>
+            </li>
+            <li><strong>Thời gian xử lý:</strong> 2-5 giây trên mạng 4G/WiFi</li>
+            <li><strong>Chính sách bảo mật:</strong>
+                <ul>
+                    <li><a href="https://developers.google.com/ml-kit/terms" target="_blank">ML Kit Terms of Service</a></li>
+                    <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+                    <li><a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank">Data Processing Addendum</a></li>
+                </ul>
+            </li>
+            <li><strong>Cam kết từ Google:</strong>
+                <ul>
+                    <li>Không lưu trữ ảnh đầu vào</li>
+                    <li>Không sử dụng dữ liệu để cải thiện sản phẩm khác</li>
+                    <li>Tuân thủ GDPR và các quy định bảo mật quốc tế</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div style="background: #eaf4fb; padding: 12px; border-left: 4px solid #3498db; margin: 10px 0;">
+        <p><strong>Lưu ý về cơ sở đồng ý:</strong> Việc gửi dữ liệu đến Google ML Kit được thực hiện dựa trên hợp đồng dịch vụ đã ký giữa tổ chức và AZVision JSC. Nhân viên được tổ chức thông báo về quy trình này trước khi bắt đầu sử dụng hệ thống chấm công.</p>
+    </div>
+
+    <h3>8.2. Firebase Cloud Messaging (FCM)</h3>
+    <ul>
+        <li><strong>Mục đích:</strong> Gửi thông báo push đến thiết bị của bạn</li>
+        <li><strong>Dữ liệu được gửi:</strong> FCM tokens và thông tin thiết bị cơ bản</li>
+        <li><strong>Chính sách bảo mật của Google:</strong> <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></li>
+    </ul>
+    
+    <p><strong>Lưu ý quan trọng:</strong> Dữ liệu sinh trắc học (khuôn mặt) KHÔNG được gửi đến Firebase. Chỉ có ML Kit được sử dụng để xử lý ảnh khuôn mặt.</p>
+
+    <h2>9. Lưu trữ dữ liệu</h2>
+    <ul>
+        <li><strong>Thời gian lưu trữ:</strong> Dữ liệu được lưu trữ trong thời gian bạn làm việc tại tổ chức và tối đa 5 năm sau khi nghỉ việc (theo quy định pháp luật về lưu trữ hồ sơ lao động).</li>
+        <li><strong>Xóa dữ liệu:</strong> Khi bạn nghỉ việc, dữ liệu khuôn mặt có thể được xóa theo yêu cầu (sau khi hoàn tất nghĩa vụ lưu trữ hồ sơ).</li>
+    </ul>
+
+    <h2>10. Thay đổi chính sách</h2>
+    <p>
+        Chúng tôi có thể cập nhật Chính sách Bảo mật này theo thời gian. Mọi thay đổi sẽ được thông báo qua ứng dụng 
+        hoặc email. Phiên bản mới nhất luôn có sẵn trong ứng dụng.
+    </p>
+    <p><strong>Ngày cập nhật gần nhất:</strong> 18/03/2026</p>
+
+    <h2>11. Tuân thủ pháp luật và các chuẩn quốc tế</h2>
+    <p>Chính sách này tuân thủ:</p>
+    <ul>
+        <li>Luật An toàn thông tin mạng Việt Nam (Luật số 86/2015/QH13)</li>
+        <li>Nghị định 13/2023/NĐ-CP về Bảo vệ dữ liệu cá nhân</li>
+        <li>Quy định về bảo vệ dữ liệu sinh trắc học</li>
+        <li>Apple App Store Guidelines 2.1 (Information Needed)</li>
+        <li>Apple App Store Guidelines 5.1.1(i) (Privacy - Data Collection)</li>
+        <li>Apple App Store Guidelines 5.1.2(i) (Privacy - Data Use and Sharing)</li>
+    </ul>
+
+    <h3>11.1. Tuân thủ Apple App Store về Dữ liệu Khuôn mặt</h3>
+    <p>Face Attendance là ứng dụng B2B doanh nghiệp. Các yêu cầu của Apple App Store được đáp ứng trong bối cảnh đặc thù này:</p>
+    <ul>
+        <li><strong>Công khai thông tin (Disclose what data is sent):</strong> Chính sách bảo mật này giải thích đầy đủ: ảnh khuôn mặt được gửi tạm thời đến Google ML Kit, face embeddings được lưu trên server riêng của tổ chức, ảnh gốc bị xóa ngay sau xử lý</li>
+        <li><strong>Xác định bên nhận (Specify who data is sent to):</strong> Google LLC thông qua ML Kit Face Detection API được xác định rõ ràng trong chính sách bảo mật (Section 4.1 và 8.1) và trong hợp đồng với từng tổ chức khách hàng</li>
+        <li><strong>Sự đồng ý hợp lệ theo hợp đồng (Obtain user permission):</strong> Tổ chức ký hợp đồng với AZVision JSC trong đó có điều khoản rõ ràng về Google ML Kit — đây là sự đồng ý ở cấp tổ chức (Data Controller). Nhân viên được tổ chức thông báo trước khi sử dụng. Đây là mô hình đồng ý hợp lệ và phổ biến trong các giải pháp B2B doanh nghiệp như Google Workspace, Microsoft 365, SAP</li>
+        <li><strong>Hạ tầng server riêng biệt:</strong> Mỗi tổ chức có server riêng — AZVision JSC triển khai hệ thống lên server của khách hàng và bàn giao quyền kiểm soát hoàn toàn. Dữ liệu nhân viên không lưu trên hệ thống chung hay server của AZVision JSC</li>
+        <li><strong>Kiểm soát truy cập nghiêm ngặt:</strong> Mỗi tổ chức có một tài khoản admin với mã định danh riêng. Chỉ admin mới tạo được tài khoản nhân viên — không có người dùng nào tự đăng ký được, đảm bảo 100% người dùng đã qua quy trình onboarding của tổ chức</li>
+        <li><strong>Quyền nhân viên:</strong> Nhân viên có thể báo cáo với HR/quản lý nếu không đồng ý với việc sử dụng dữ liệu khuôn mặt</li>
+        <li><strong>Xóa dữ liệu:</strong> Quản trị viên tổ chức có thể xóa dữ liệu khuôn mặt theo yêu cầu thông qua hệ thống quản lý</li>
+    </ul>
+
+    <div class="contact">
+        <h2>12. Liên hệ</h2>
+        <p>Nếu bạn có câu hỏi về Chính sách Bảo mật này, vui lòng liên hệ:</p>
+        <ul>
+            <li><strong>Email:</strong> Azvision.jsc@gmail.com</li>
+            <li><strong>Điện thoại:</strong> +84 358 106 344</li>
+            <li><strong>Địa chỉ:</strong> 30 Nguyễn Thị Sáu, Phường Hòa Xuân, Thành phố Đà Nẵng, Việt Nam</li>
+        </ul>
+    </div>
+
+    <hr style="margin-top: 40px; border: none; border-top: 1px solid #bdc3c7;">
+    <p style="text-align: center; color: #7f8c8d; font-size: 14px;">
+        © 2026 Face Attendance. All rights reserved.
+    </p>
+</body>
+</html>
